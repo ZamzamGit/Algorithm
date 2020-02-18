@@ -22,7 +22,6 @@ public class TheRingOnFire {
                     v = 1;
                 }
             }
-
             student.remove(v-1);
             v=v-1;
 
