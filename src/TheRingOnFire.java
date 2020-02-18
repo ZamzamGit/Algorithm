@@ -19,7 +19,7 @@ public class TheRingOnFire {
                 k = k + 1;
             }
             k = k % student.size();
-            if (k == 0){
+            if (k == 0) {
                 k = student.size();
             }
             student.remove(k-1);
