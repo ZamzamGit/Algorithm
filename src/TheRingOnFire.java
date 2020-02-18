@@ -12,11 +12,17 @@ public class TheRingOnFire {
             student.add(i);
         }
 
+
         while (student.size() > 1) {
-            if (k + c > student.size()) {
-                k = k + c - student.size();
+
+            for (int m = 0; m < c; m++) {
+                k = k + 1;
             }
-            student.remove(k);
+            k = k % student.size();
+            if (k == 0) {
+                k = student.size();
+            }
+            student.remove(k-1);
             System.out.println(student);
         }
     }
