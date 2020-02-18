@@ -1,33 +1,26 @@
+import java.util.ArrayList;
+
 public class TheRingOnFire {
 
     public static void main(String[] args) {
 
-        int students[] = new int[5];
-        int c = 1;
-        int k = 6;
-
-
-        for (int i = 1; i < students.length; i++) {
-            students[i] = i;
+        ArrayList<Integer> student = new ArrayList<>();
+        int studentAmount = 5;
+        int c = 6;
+        int k = 0;
+        for (int i = 0; i < studentAmount; i++) {
+            student.add(i);
         }
 
-        int landOnStudent = c + k;
-
-        if (landOnStudent > students.length) {
-            c = landOnStudent - students.length;
-        }
-        students[c] = 0;
-        for (int i = 0; i < students.length-1; i++) {
-            if (students[i] == 0){
-                students[i] = students[i+1];
-                students[i+1]=0;
+        while (student.size() > 1) {
+            if (k + c > student.size()) {
+                k = k + c - student.size();
             }
+            student.remove(k);
+            System.out.println(student);
         }
-        for (int i = 0; i <students.length ; i++) {
-            System.out.println(students[i]);
-
-        }
-
     }
 }
+
+
 
