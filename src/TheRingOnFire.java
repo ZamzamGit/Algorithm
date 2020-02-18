@@ -7,23 +7,28 @@ public class TheRingOnFire {
         ArrayList<Integer> student = new ArrayList<>();
         int studentAmount = 5;
         int c = 6;
-        int k = 0;
+        int k = 1;
+        int v = 0;
         for (int i = 0; i < studentAmount; i++) {
-            student.add(i);
+            student.add(i+1);
         }
 
 
-        while (student.size() > 1) {
-
-            for (int m = 0; m < c; m++) {
-                k = k + 1;
-            }
-            k = k % student.size();
-            if (k == 0) {
-                k = student.size();
-            }
-            student.remove(k-1);
+        while (student.size() >= k) {
             System.out.println(student);
+            for (int m = 1; m <= c; m++) {
+                v += 1;
+                if (v > student.size()) {
+                    v = 1;
+                }
+            }
+
+            student.remove(v-1);
+            v=v-1;
+
+
+
+
         }
     }
 }
