@@ -14,75 +14,77 @@ public class Ceasar {
         int combo = 0;
         Scanner scanner = new Scanner(System.in);
 
-        //List<String> strings = new ArrayList<>(Arrays.asList(scanner.nextLine().split(" ")));
-
         String[] arr = scanner.nextLine().split(" ");
 
         for (int i = 0; i < arr.length; i++) {
 
+            int d = 0;
+            Boolean isNumber;
+            try {
+                d = Integer.parseInt(arr[i]);
+                isNumber = true;
+            } catch (NumberFormatException nfe) {
+                isNumber = false;
+            }
 
 
-          int d=0;
-          Boolean isNumber;
-          try {
-            d = Integer.parseInt(arr[i]);
+            if (!arr[i].equals("0") && isNumber) {
+                for (int j = i; j < arr.length; j++) {
 
-            isNumber = true;
-          }catch(NumberFormatException nfe){
-            isNumber = false;
-          }
+                    Boolean isAnotherNumber;
+                    try {
+                        Integer.parseInt(arr[j]);
+                        isAnotherNumber = true;
 
+                    } catch (NumberFormatException nfe) {
+                        isAnotherNumber = false;
+                    }
 
-
-
-
-
-                if (!arr[i].equals("0") && isNumber)
-                {
-
-
-                    for (int j = i; j < arr.length; j++) {
-
-
-
-                      String s =arr[j];
-                      Character letter = s.charAt(0);
-
-                      if (isNumber){
-
-                      }else {
-                          int value = letter;
-                          value = value + d;
-                          arr[j]= String.valueOf((char) value);
-                         
-                      }
-
+                    if (!isAnotherNumber && !arr[j].equals("^")) {
+                        String s = arr[j];
+                        Character letter = s.charAt(0);
+                        int value = letter;
+                        value = value + d;
+                        arr[j] = String.valueOf((char) value);
+                    } else {
+                        if (!arr[j].equals("^")) {
+                            arr[i] = "0";
+                        }
                     }
                 }
+            }
 
-                if (arr[i].equals("^") ){
-                combo +=1;
 
-            }else{
+            if (arr[i].equals("^")) {
+                combo += 1;
+                try {
+                    if (!arr[i + 1].equals("^")) {
+                        for (int j = 0; j < combo; j++) {
 
-                    for (int j = 1; j < combo; j++) {
-
-                        arr[(i-1-combo-j)]  = "0";
-                        arr[(i-1-j)]  = "0";
-
+                            arr[(i - combo - j)] = "0";
+                            arr[(i - j)] = "0";
+                        }
+                        combo = 0;
                     }
+                } catch (ArrayIndexOutOfBoundsException nfe) {
+
+                    for (int j = 0; j < combo; j++) {
+                        arr[(i - combo - j)] = "0";
+                        arr[(i - j)] = "0";
+                    }
+                    combo = 0;
                 }
+            }
         }
+
+
         for (int i = 0; i < arr.length; i++) {
-          if (!arr[i].equals("0")) {
-               System.out.print(arr[i]);
-               System.out.print(" ");
+            if (!arr[i].equals("0")) {
+                System.out.print(arr[i]);
+                System.out.print(" ");
+            }
         }
-        }
-
-        }
-
-
-
     }
+}
+
 
