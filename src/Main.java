@@ -2,19 +2,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] A = {3, 2, 2, 2, 2, 5, 5, 2};
+        int[] A = {1, 2, 1, 2, 4, 2, 2, 1,1,1,1,1,1,1,1,1,1,2,2,1};
         int[] B = {9, 9, 9, 9, 9, 9, 9, 9};
-        int[] C = {1, 2, 2, 1, 9, 9, 9, 9};
-
-
 
         System.out.println(ALG1(A));
         System.out.println(ALG3(A));
-        System.out.println(ALG1(B));
-        System.out.println(ALG3(B));
-        System.out.println(ALG1(C));
-        System.out.println(ALG3(C));
-
     }
 
     private static int ALG1(int[] A) {
@@ -50,8 +42,13 @@ public class Main {
                 combo+=1;
 
             }else if(combo > highest){
+
                 highest = combo;
+                     combo = 1;
+
+            } else {
                 combo = 1;
+
             }
             if (i == A.length-2){
                 if (combo > highest) {
@@ -62,5 +59,4 @@ public class Main {
         return highest;
     }
 }
-
 
