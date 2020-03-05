@@ -1,9 +1,3 @@
-import com.sun.org.apache.xpath.internal.objects.XString;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Ceasar {
@@ -13,6 +7,7 @@ public class Ceasar {
 
         int combo = 0;
         Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
         String[] arr = scanner.nextLine().split(" ");
 
         for (int i = 0; i < arr.length; i++) {
