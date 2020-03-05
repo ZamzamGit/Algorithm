@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.objects.XString;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.ArrayList;
@@ -12,18 +13,22 @@ public class Ceasar {
 
         Scanner scanner = new Scanner(System.in);
 
-        List<String> strings = new ArrayList<>(Arrays.asList(scanner.nextLine().split(" ")));
+        //List<String> strings = new ArrayList<>(Arrays.asList(scanner.nextLine().split(" ")));
 
+        String[] arr = scanner.nextLine().split(" ");
 
-        for (int i = 0; i < strings.size(); i++) {
-            if (strings.get(i).equals("^")){
-                strings.remove(i);
-                strings.remove(i-1);
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].equals("^")){
+                arr[i] = "0";
+                arr[i-1] = "0";
+
             }
         }
-        for (int i = 0; i < strings.size(); i++) {
-            System.out.print(strings.get(i));
-            System.out.print(" ");
+        for (int i = 0; i < arr.length; i++) {
+            if (!arr[i].equals("0")) {
+                System.out.print(arr[i]);
+                System.out.print(" ");
+            }
         }
 
         }
