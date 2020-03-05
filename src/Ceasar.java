@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,14 +10,15 @@ public class Ceasar {
 
         Scanner scanner = new Scanner(System.in);
 
-        String[] sd = scanner.nextLine().split(" ");
-        System.out.println(sd.length);
+        List<String> strings = new ArrayList<>(Arrays.asList(scanner.nextLine().split(" ")));
+        System.out.println(strings.size());
 
-        List<String[]> s = new ArrayList<>();
-        s.add(sd);
+        if(strings.contains("^"));
 
+
+        }
 
 
 
     }
-}
+
