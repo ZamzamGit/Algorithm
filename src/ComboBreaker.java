@@ -9,6 +9,7 @@ public class ComboBreaker {
         String nextMoves;
         String returnMoves = "";
 
+
         for (int i = 0; i < moves.length; i++) {
             if((i+3) < moves.length){
                 nextMoves = moves[i] + moves[i+1] + moves[i+2] + moves[i+3];
