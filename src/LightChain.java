@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class LightChain {
@@ -13,10 +14,7 @@ public class LightChain {
             String num = strArr[i];
             intArr[i] = Integer.parseInt(num);
         }
-
-
+        Arrays.sort(intArr);
+        System.out.print(Arrays.toString(intArr));
     }
-
-
-
 }
