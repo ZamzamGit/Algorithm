@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class LightChain {
 
-
     public static void main(String[] args) {
 
 
