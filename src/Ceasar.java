@@ -1,83 +1,70 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Ceasar {
-
-
     public static void main(String[] args) {
-
-        int combo = 0;
+        boolean searching = false;
+        int changingNumber = 0;
+        int tempI1 = 0;
+        int tempI2 = 0;
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
-        String[] arr = scanner.nextLine().split(" ");
+        List<String> strings = new ArrayList<>(Arrays.asList(scanner.nextLine().split(" ")));
 
-        for (int i = 0; i < arr.length; i++) {
-
-            int d = 0;
-            Boolean isNumber;
-            try {
-                d = Integer.parseInt(arr[i]);
-                isNumber = true;
-            } catch (NumberFormatException nfe) {
-                isNumber = false;
-            }
+        for (int i = 0; i <strings.size() ; i++) {
 
 
-            if (!arr[i].equals("0") && isNumber) {
-                for (int j = i; j < arr.length; j++) {
-
-                    Boolean isAnotherNumber;
-                    try {
-                        Integer.parseInt(arr[j]);
-                        isAnotherNumber = true;
-
-                    } catch (NumberFormatException nfe) {
-                        isAnotherNumber = false;
-                    }
-
-                    if (!isAnotherNumber && !arr[j].equals("^")) {
-                        String s = arr[j];
-                        Character letter = s.charAt(0);
-                        int value = letter;
-                        value = value + d;
-                        arr[j] = String.valueOf((char) value);
-                    } else {
-                        if (!arr[j].equals("^")) {
-                            arr[i] = "0";
-                        }
-                    }
-                }
-            }
-
-
-            if (arr[i].equals("^")) {
-                combo += 1;
+            if(strings.get(i).equals("^") && !searching){
                 try {
-                    if (!arr[i + 1].equals("^")) {
-                        for (int j = 0; j < combo; j++) {
+                    changingNumber = Integer.parseInt(strings.get(i-1));
+                    tempI1 = i;
+                    tempI2 = i-1;
+                    searching = true;
 
-                            arr[(i - combo - j)] = "0";
-                            arr[(i - j)] = "0";
-                        }
-                        combo = 0;
-                    }
-                } catch (ArrayIndexOutOfBoundsException nfe) {
 
-                    for (int j = 0; j < combo; j++) {
-                        arr[(i - combo - j)] = "0";
-                        arr[(i - j)] = "0";
-                    }
-                    combo = 0;
+
+                } catch (NumberFormatException nfe) {
+                    searching = false;
+                    strings.remove(i);
+                    strings.remove(i-1);
+                    i = 0;
                 }
             }
-        }
+            if(searching){
+                try {
+                    Integer.parseInt(strings.get(i));
 
+                } catch (NumberFormatException nfe) {
+                    if (!strings.get(i).equals("^")){
+                        String s = strings.get(i);
+                        char letter = s.charAt(0);
+                        int value = letter;
+                        int newChangingNumber = changingNumber % 26;
+                        value = value + newChangingNumber;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (!arr[i].equals("0")) {
-                System.out.print(arr[i]);
-                System.out.print(" ");
+                        if (value > 90){
+                            value = value - 90 + 64;
+                        }
+                        strings.set(i,String.valueOf((char) value));
+                    }
+                }
+                if (i == strings.size()-1){
+                    searching = false;
+                    i = tempI1-2;
+                    strings.remove(tempI1);
+                    strings.remove(tempI2);
+
+                }
             }
+
         }
+        for (int i = 0; i <strings.size(); i++) {
+            System.out.print(strings.get(i));
+            System.out.print(" ");
+        }
+
     }
 }
 
